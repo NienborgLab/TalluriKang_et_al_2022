@@ -5,7 +5,16 @@ If you use the data or the code, please cite: Talluri, B. C., Kang I., Lazere, A
 The repository is organized into the following folders:
 
 regression: Contains all the relevant scripts, and tools to perform regression analysis on the data. The regression analysis is inspired from Musall et al., 2019 Nat Neurosci., and is loosely based on the code written by Simon Musall and colleagues available at https://github.com/musall/ridgeModel.
+
+modelFree: Contains all the relevant scripts and tools to perform model free analysis on the data. This analysis uses model fits from the regression analysis.
+
+ReceptiveField: Contains example data and scripts to fit the horizontal receptive field (RF) positions of multi-units from the responses to vertical gratings presented around the manually located RFs.
+
+SVD: Contains scripts to run singular vector decomposition analysis on video recordings of animal's movements. This analysis is inspired from Stringer et al., 2019 Science., and is loosely based on code written by Stringer and colleagues available at https://github.com/MouseLand/facemap/blob/main/matlab/computeSVDmotion.m.
+
 Note: All the scripts have been commented for readers to understand and any functions used in these scripts that are not built-in have been added. However, please understand that the description may not be complete and if you run into any issues while running the code please contact us.
+
+Example raw data, and preprocessed data for all sessions can be downloaded from: https://figshare.com/s/c2b2494fba97e7b3c2b1
 
 LICENSE
 
