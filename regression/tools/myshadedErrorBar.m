@@ -1,57 +1,5 @@
 function varargout=myshadedErrorBar(x,y,errBar,lineProps, errBarcol, transparent)
-% function H=shadedErrorBar(x,y,errBar,lineProps,transparent)
-%
-% Purpose 
-% Makes a 2-d line plot with a pretty shaded error bar made
-% using patch. Error bar color is chosen automatically.
-%
-% Inputs
-% x - vector of x values [optional, can be left empty]
-% y - vector of y values or a matrix of n observations by m cases
-%     where m has length(x);
-% errBar - if a vector we draw symmetric errorbars. If it has a size
-%          of [2,length(x)] then we draw asymmetric error bars with
-%          row 1 being the upper bar and row 2 being the lower bar
-%          (with respect to y). ** alternatively ** errBar can be a
-%          cellArray of two function handles. The first defines which
-%          statistic the line should be and the second defines the
-%          error bar.
-% lineProps - [optional,'-k' by default] defines the properties of
-%             the data line. e.g.:    
-%             'or-', or {'-or','markerfacecolor',[1,0.2,0.2]}
-% transparent - [optional, 0 by default] if ==1 the shaded error
-%               bar is made transparent, which forces the renderer
-%               to be openGl. However, if this is saved as .eps the
-%               resulting file will contain a raster not a vector
-%               image. 
-%
-% Outputs
-% H - a structure of handles to the generated plot objects.     
-%
-%
-% Examples
-% y=randn(30,80); x=1:size(y,2);
-% shadedErrorBar(x,mean(y,1),std(y),'g');
-% shadedErrorBar(x,y,{@median,@std},{'r-o','markerfacecolor','r'});    
-% shadedErrorBar([],y,{@median,@std},{'r-o','markerfacecolor','r'});    
-%
-% Overlay two transparent lines
-% y=randn(30,80)*10; x=(1:size(y,2))-40;
-% shadedErrorBar(x,y,{@mean,@std},'-r',1); 
-% hold on
-% y=ones(30,1)*x; y=y+0.06*y.^2+randn(size(y))*10;
-% shadedErrorBar(x,y,{@mean,@std},'-b',1); 
-% hold off
-%
-%
-% Rob Campbell - November 2009
-
-
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-% Error checking    
-error(nargchk(3,6,nargin))
-
+% adapted from shadedErrorBar function written by Rob Campbell: https://www.mathworks.com/matlabcentral/fileexchange/26311-raacampbell-shadederrorbar
 
 %Process y using function handles if needed to make the error bar
 %dynamically
