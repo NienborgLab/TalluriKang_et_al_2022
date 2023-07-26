@@ -1,0 +1,1 @@
+This folder demonstrates fitting the horizontal receptive field (RF) positions of multi-units from the responses to vertical gratings presented around the manually located RFs.Run firRF in MATLAB.
