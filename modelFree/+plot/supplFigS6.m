@@ -1,4 +1,4 @@
-function supplFig6(analDir,rrmDir,tsDir,figDir)
+function supplFigS6(analDir,rrmDir,tsDir,figDir)
 % function supplFig6(analDir,rrmDir,tsDir,figDir)
 %
 % plot supplFig6: PSTHs across sessions separately for M1 and M2, Movement
@@ -136,9 +136,10 @@ for n = 1:2
     end   
     yls = get(gca,'ylim');
     ylims(n) = yls(2);
-    set(gca,'xlim',xlims,'ylim',[0 yls(2)],'xtick',[-300:300:300],'tickdir','out')
+    set(gca,'xlim',xlims,'ylim',[0 yls(2)],'xtick',[-300:150:450],'tickdir','out')
     title(sprintf...
         ('%s %d','                                             Data: M',n))
+    offsetAxes;
     if n ==1
         text(-700,yls(2)*1.2,'A','fontsize',16,'fontweight','bold')
     else
@@ -171,8 +172,8 @@ for n = 1:2
     xlabel('\newlineafter Movement')
     yls = get(gca,'ylim');
     set(gca,'xlim',xlimsM,'ylim',[0 ylims(n)],'yticklabel','','xtick',...
-        [-300:300:300],'tickdir','out')
-
+        [-300:150:450],'tickdir','out')
+    offsetAxes;
     if n==1
         %%
         text(-200, 28,'movement:')
@@ -214,13 +215,13 @@ for n = 1:3
     h.Color=vcols(n,:);
     h.MarkerEdgeColor = vcols(n,:);
     h.MarkerFaceColor = vcols(n,:);
-    
     set(gca,'xlim',[-.35 .35],'box','off','tickdir','out',...
-        'xtick',[-.2 0 .2],'xticklabel','', 'ytick',[0:100:500],'yticklabel','');
+        'xtick',[-.3 0 .3],'xticklabel','', 'ytick',yl,'yticklabel',yl);
+    offsetAxes;
     text(-.32,yl(2),sprintf('n=%d',sum(~isnan(wMIs_Vdt{n}))))
     if n ==1
         xlabel('       Movement Index\newline (R_{with}-R_{w/o})/(R_{with}+R_{w/o})')
-        set(gca,'xticklabel',[-.2 0 .2],'yticklabel',[0:100:500])
+        set(gca,'xticklabel',[-.3 0 .3],'yticklabel',[0:100:500])
     elseif n==2
         ylabel ('   # Units\newline')
     else
@@ -242,4 +243,3 @@ saveas(gcf,figname)
 % save figure data 
 datname = ['figS6_MI_data' date '.mat'];
 save(datname,'wMIs_Vdt')
-
