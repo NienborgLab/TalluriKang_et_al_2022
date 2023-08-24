@@ -48,7 +48,7 @@ for n = 1:length(dn)
         % select unit in respective area exceeding required rates
         idx = intersect(area_idx, find(mrb==4));
         if ~isempty(idx) 
-                
+
                 % sdfs for averaging                
                 bsdfsStM{v,1} = [bsdfsStM{v,1};cell2mat(sdfStM(idx,1))];
                 bsdfsStM{v,2} = [bsdfsStM{v,2};cell2mat(sdfStM(idx,2))];
@@ -118,7 +118,7 @@ for n = 1
         xlabel('time after stimulus')
         ylabel('response [sp/sec]');
     end
-
+offsetAxes;
 end
 
 text(1250, 57,'attention')
@@ -169,10 +169,11 @@ for n = 4
         xlabel('time after stimulus (ms)')
         %ylabel('response [sp/sec]');
     end
+    offsetAxes;
     
 end
 for n = 6:7
-    set(sp{n},'xlim',[-200 1900],'box','off','tickdir','out','ylim',[0 60],'ytick',[0 30 60]);
+    set(sp{n},'xlim',[-200 1900],'xtick', 0:600:1800, 'box','off','tickdir','out','ylim',[0 60],'ytick',[0 30 60]);
 end
 
 if ~exist(figDir,'dir')
@@ -183,3 +184,7 @@ fname = ['fig3A_SDFs' date '.pdf'];
 figname = ['fig3A_SDFs' date '.fig'];
 saveas(gcf,fname)
 saveas(gcf,figname)
+
+% save figure data 
+datname = ['fig3A_SDF_data' date '.mat'];
+save(datname,'bsdfsStM','bsdfsStNM', 'bsdfsVfStM', 'bsdfsVfStNM');
