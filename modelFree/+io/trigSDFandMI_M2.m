@@ -56,7 +56,7 @@ sdfFModMM = cell(nU,nS); sdfFModNMM = cell(nU,nS);
 
 for h = 1:length(hIdx)
     idx = hIdx{h};
-    for c = 1:idx % unit IDs
+    for c = 1:length(idx) % unit IDs
         for s = 1:size(sdfStM,2) % stimulus types 
             [~,sdfStM{idx(c),s}] = io.triggeredAverage(trigIdxS{h,s},V(idx(c),:),w,fS,0);
             [~,sdfStNMM{idx(c),s}] = io.triggeredAverage(trigIdxSNM{h,s},V(idx(c),:),w,fS,0);
@@ -162,5 +162,3 @@ end
 % save MIs and AIs ========================================================
 cd(fullfile(analDir,sesID))
 save('AI_MIs','AI_Vdt','wMI_Vdt')
-
-   
