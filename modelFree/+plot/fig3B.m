@@ -1,4 +1,4 @@
-function fig3b(analDir,rrmDir,tsDir,figDir)
+function fig3B(analDir,rrmDir,tsDir,figDir)
 % function Fig3b(analDir,rrmDir,tsDir,figDir)
 %
 % plot Fig3b: Movement Index and Attention Index for each unit
@@ -80,7 +80,8 @@ for n = 1:3
     g.MarkerSize = 3;
 end
 set(gca,'xlim',[-.35 .35],'ylim',[-.35 .35],'box','off','tickdir','out',...
-    'xtick',[-.2 0 .2],'ytick',[-.2 0 .2]);
+    'xtick',[-.3 0 .3],'ytick',[-.3 0 .3]);
+offsetAxes;
 xlabel('attention index')
 ylabel('movement index')
 
@@ -111,8 +112,9 @@ for n = 1:3
     h.MarkerEdgeColor = vcols(n,:);
     h.MarkerFaceColor = vcols(n,:);
     set(gca,'xlim',[-.35 .35],'box','off','tickdir','out',...
-        'xtick',[-.2 0 .2],'xticklabel','', 'ytick',[0:10:50],'yticklabel','');
-    text(-.3,yl(2),sprintf('n=%d',sum(~isnan(wAIs_Vdt{n}))))
+        'xtick',[-.3 0 .3],'xticklabel','', 'ytick',yl,'yticklabel',yl);
+    text(-.3,yl(2),sprintf('n=%d',sum(~isnan(wAIs_Vdt{n}))));
+    offsetAxes;
 end
 
 % histograms for MI
@@ -139,9 +141,10 @@ for n = 1:3
     h.MarkerEdgeColor = vcols(n,:);
     h.MarkerFaceColor = vcols(n,:);
     
-    set(gca,'tickdir','out','xtick',[-.2 0 .2],'xticklabel','',...
-         'ytick',[0:10:150],'yticklabel','');
-    set(gca,'xlim',[-.35 .35],'box','off','xdir','normal','view',[90 -90])
+    set(gca,'tickdir','out','xtick',[-.3 0 .3],'xticklabel','',...
+         'ytick',yl,'yticklabel',yl);
+    set(gca,'xlim',[-.35 .35],'box','off','xdir','normal','view',[90 -90]);
+    offsetAxes;
 end
 
 % save figure =============================================================
@@ -158,5 +161,3 @@ saveas(gcf,figname)
 % save figure data 
 datname = ['fig3B_AIvsMI_data' date '.mat'];
 save(datname,'wMIs_Vdt','wAIs_Vdt')
-    
-
